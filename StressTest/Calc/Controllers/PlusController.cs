@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Calc.Controllers;
 
@@ -7,7 +6,14 @@ namespace Calc.Controllers;
 [Route("[controller]")]
 public class PlusController : ControllerBase
 {
-	public PlusController()
-	{
-	}
+    public PlusController()
+    {
+    }
+
+    [HttpGet(Name = "Plus")]
+    public object Plus()
+    {
+        var result = 2 + 2;
+        return new { result };
+    }
 }
