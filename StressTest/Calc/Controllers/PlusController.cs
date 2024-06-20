@@ -6,14 +6,10 @@ namespace Calc.Controllers;
 [Route("[controller]")]
 public class PlusController : ControllerBase
 {
-    public PlusController()
+    [HttpPost(Name = "Plus")]
+    public object Plus(int first, int second)
     {
-    }
-
-    [HttpGet(Name = "Plus")]
-    public object Plus()
-    {
-        var result = 2 + 2;
+        var result = first + second;
         return new { result };
     }
 }
