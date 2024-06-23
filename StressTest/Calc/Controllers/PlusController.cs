@@ -1,15 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Calc.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Calc.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PlusController : ControllerBase
+public class CalcController : ControllerBase
 {
-    [HttpPost(Name = "Plus")]
-    public object Plus(int first, int second)
+    [HttpPost]
+    [Route("[action]")]
+    public object Plus([FromBody] AddArgs args)
     {
-        var result = first + second;
+        var result = args.First + args.Second;
         return new { result };
+    }
+
+    [HttpPost]
+    [Route("[action]")]
+    public object Mult(decimal arg1)
+    {
+        return new { result = 0 };
     }
 }
