@@ -3,11 +3,15 @@ $(document).ready(function(){
         var agr1 = $("#add-agr-1").val();
         var agr2 = $("#add-agr-2").val();
 
-        $.post(
-            "http://0.0.0.0:9001/Calc/Plus", 
-            { first: agr1, second: agr2 })
+        $.ajax({
+            type: "post",
+            url: "http://localhost:9001/Calc/Plus",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ first: agr1, second: agr2 })
+        })
         .done(function(data) {
-            alert(data);
+            $("#add-sum-result").text(data.result);
         })
     });
 });
